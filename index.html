@@ -26,29 +26,32 @@
                 age: "just a number!"
             }
 
-            // use arrow functions so that component reference as `this` keyword is available within the function
-            handleClick = (event) => {
-                console.log(event.target);
-                this.setState(
-                    {
-                        name: "May be he has some name!"
+            handleChange = (event) => {
+
+                this.setState( {
+                        name: event.target.value
                     }
                 );
             }
 
-            handleHoverOver = (event) => {
+            // use arrow functions so that component reference as `this` keyword is available within the function
+            handleSubmit = (event) => {
 
-                // log the target element, where the event happened and the mouse location
-                console.log(event.target, event.pageX);
+                // defautl submit behavior is to refresh the page and we don't want that
+                event.preventDefault();
+                console.log(this.state.name + " submitted the form");
+
             }
+
             render() {
                 return(
                     <div className="app-content">
 
-                        <h1>Hello World</h1>
-                        <p>My name is { this.state.name } and my age is { this.state.age }</p>
-                        <button onClick={ this.handleClick }> Click Me! </button>
-                        <button onMouseOver={ this.handleHoverOver }> Hover Me! </button>
+                        <h1>Hello { this.state.name }</h1>
+                        <form onSubmit={ this.handleSubmit }>
+                            <input type="text" onChange= { this.handleChange } />
+                            <button>Submit</button>
+                        </form>
                     </div>
                 );
             }
