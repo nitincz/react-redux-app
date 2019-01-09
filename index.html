@@ -26,11 +26,17 @@
                 age: "just a number!"
             }
 
-            handleClick(event) {
+            // use arrow functions so that component reference as `this` keyword is available within the function
+            handleClick = (event) => {
                 console.log(event.target);
+                this.setState(
+                    {
+                        name: "May be he has some name!"
+                    }
+                );
             }
 
-            handleHoverOver(Event) {
+            handleHoverOver = (event) => {
 
                 // log the target element, where the event happened and the mouse location
                 console.log(event.target, event.pageX);
