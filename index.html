@@ -20,13 +20,29 @@
     <script type="text/babel">
 
         class App extends React.Component {
-            render() {
 
+            state = {
+                name: "a guy has no name!",
+                age: "just a number!"
+            }
+
+            handleClick(event) {
+                console.log(event.target);
+            }
+
+            handleHoverOver(Event) {
+
+                // log the target element, where the event happened and the mouse location
+                console.log(event.target, event.pageX);
+            }
+            render() {
                 return(
                     <div className="app-content">
 
                         <h1>Hello World</h1>
-                        <p>{ Math.random() * 10 }</p>
+                        <p>My name is { this.state.name } and my age is { this.state.age }</p>
+                        <button onClick={ this.handleClick }> Click Me! </button>
+                        <button onMouseOver={ this.handleHoverOver }> Hover Me! </button>
                     </div>
                 );
             }
