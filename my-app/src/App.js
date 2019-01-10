@@ -1,22 +1,42 @@
 import React, { Component } from 'react';
 import NinjasList from './NinjasList';
+import AddNinja from './AddNinja';
 
 
 class App extends Component {
 
- state = {
+    state = {
     ninjas: [ 
-        { name: "pikachu",  age: "19", belt: "yellow", id: "10" },
-        { name: "bulbasaur",  age: "26", belt: "blue", id: "11" }
+        { name: "pikachu",  age: "19", belt: "yellow", id: "1" },
+        { name: "bulbasaur",  age: "26", belt: "blue", id: "2" }
     ],
 
     minAge: 20
- }
-  render() {
-    return (
-      <NinjasList ninjas={ this.state.ninjas } minAge={ this.state.minAge }/>
-    );
-  }
+    }
+
+    // a function to update our ninjas state, that would be passed to another component.
+    // We pass only the reference of this function not the component entirely
+    addNinja = (ninja) => {
+        ninja.id = this.state.ninjas.length + 1;
+
+        // block scope variable (var is for function scope)
+        // split the ninjas and add the values to a new array and then assign to a variable. This is merely copying an array
+        let newNinjas = [...this.state.ninjas];
+        newNinjas.push(ninja);
+
+        // never update the state directly. Copy, update a new state in copy and then update
+        this.setState({
+            ninjas: newNinjas
+        });
+    }
+    render() {
+        return (
+            <div id='app-wrapper'>
+                <NinjasList ninjas={ this.state.ninjas } minAge={ this.state.minAge }/>
+                <AddNinja addNinja={ this.addNinja }/>
+            </div>
+        );
+    }
 }
 
 export default App;
