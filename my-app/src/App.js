@@ -6,13 +6,15 @@ class App extends Component {
 
  state = {
     ninjas: [ 
-        { name: "pikachu",  age: "25", belt: "yellow", id: "10" },
+        { name: "pikachu",  age: "19", belt: "yellow", id: "10" },
         { name: "bulbasaur",  age: "26", belt: "blue", id: "11" }
-    ]
+    ],
+
+    minAge: 20
  }
   render() {
     return (
-      <NinjasList ninjas={ this.state.ninjas } />
+      <NinjasList ninjas={ this.state.ninjas } minAge={ this.state.minAge }/>
     );
   }
 }
