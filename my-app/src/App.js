@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
-import Ninjas from './Ninjas';
+import NinjasList from './NinjasList';
+
 
 class App extends Component {
+
+ state = {
+    ninjas: [ 
+        { name: "pikachu",  age: "25", belt: "yellow", id: "10" },
+        { name: "bulbasaur",  age: "26", belt: "blue", id: "11" }
+    ]
+ }
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <p>
-            Hello React App!
-          </p>
-        </header>
-        <Ninjas name="Pikachu" age="5" belt="yellow" />
-        <Ninjas name="Bulbasaur" age="9" belt="blue" />
-      </div>
+      <NinjasList ninjas={ this.state.ninjas } />
     );
   }
 }
