@@ -7,11 +7,22 @@ class App extends Component {
 
     state = {
     ninjas: [ 
-        { name: "pikachu",  age: "19", belt: "yellow", id: "1" },
-        { name: "bulbasaur",  age: "26", belt: "blue", id: "2" }
+        { name: "pikachu",  age: "19", belt: "yellow", id: 0 },
+        { name: "bulbasaur",  age: "26", belt: "blue", id: 1 }
     ],
 
     minAge: 20
+    }
+
+    deleteNinja = (id) => {
+        let remaining = this.state.ninjas.filter( ninja => {
+            return ninja.id !== id
+        });
+        this.setState(
+            {
+                ninjas: remaining
+            }
+        );
     }
 
     // a function to update our ninjas state, that would be passed to another component.
@@ -32,7 +43,7 @@ class App extends Component {
     render() {
         return (
             <div id='app-wrapper'>
-                <NinjasList ninjas={ this.state.ninjas } minAge={ this.state.minAge }/>
+                <NinjasList ninjas={ this.state.ninjas } minAge={ this.state.minAge } deleteNinja={ this.deleteNinja }/>
                 <AddNinja addNinja={ this.addNinja }/>
             </div>
         );

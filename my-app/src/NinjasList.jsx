@@ -11,7 +11,7 @@ class NinjasList extends Component {
             if (ninja.age < minAge) return (null);
 
             return(
-                <Ninjas name={ ninja.name } age={ ninja.age} belt={ ninja.belt } key={ ninja.id } />
+                <Ninjas name={ ninja.name } age={ ninja.age} belt={ ninja.belt } key={ ninja.id } id={ ninja.id } deleteNinja={ this.props.deleteNinja }/>
             );
         });
         console.log(allNinjas);
