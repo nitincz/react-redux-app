@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 
-class Ninjas extends Component {
+const Ninjas = ({ name, age, belt}) => {
 
-    render() {
-
-        const { name, age, belt } = this.props
         return (
             <div className="ninja">
                 <div>Name: { name } </div>
@@ -12,7 +9,6 @@ class Ninjas extends Component {
                 <div>Belt: { belt } </div>
             </div>
         );
-    }
 }
 
 export default Ninjas;
