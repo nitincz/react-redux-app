@@ -14,6 +14,17 @@ class App extends Component {
     minAge: 20
     }
 
+    // Life Cycle Methods
+    componentDidUpdate(prevProps, prevState) {
+        console.log('Component Updates');
+        console.log(prevProps);
+        console.log(prevState);
+    }
+
+    componentDidMount() {
+        console.log('Component Mounted');
+    }
+
     deleteNinja = (id) => {
         let remaining = this.state.ninjas.filter( ninja => {
             return ninja.id !== id
