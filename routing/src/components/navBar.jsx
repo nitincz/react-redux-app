@@ -1,8 +1,8 @@
 import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, withRouter } from 'react-router-dom';
 
-const NavBar = () => {
-
+const NavBar = (props) => {
+    console.log(props);
     return(
         <nav className="nav-wrapper red darken-3">
             <div className="container">
@@ -17,4 +17,5 @@ const NavBar = () => {
     );
 }
 
-export default NavBar;
+// return a super-charged, higher order component
+export default withRouter(NavBar);
